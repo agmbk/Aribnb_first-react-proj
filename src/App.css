@@ -9,7 +9,56 @@ div {
     display: block;
 }
 
+/* Header */
+.header {
+    overflow: hidden;
+    background-color: #2d77ab;
+    padding: 20px 10px;
+    text-align: center;
+}
+
+.header input {
+    background-color: rgba(220, 220, 220, 0.5);
+    height: 30px;
+    width: 150px;
+    text-align: center;
+    margin-right: 10px;
+    border: 2px solid white;
+    border-radius: 5px;
+    outline: none;
+}
+
+.header input[type='date'] {
+    transform: scaleY(1.05) scaleX(1.01);
+    margin-right: 13px;
+    transition: 50ms;
+}
+
+.header input[type='file']{
+    position: relative;
+    margin-top: 3px;
+    margin-left: 3px;
+    height: 30px;
+    width: 100px;
+    z-index: 0;
+}
+
+.header input:last-child {
+    background-color: inherit;
+    height: 37px;
+    width: 150px;
+    cursor: pointer;
+}
+
+.header p {
+
+}
+
+
+/** Carrousel */
+
 .carousel {
+    content: "";
     width: 90%;
     height: 100%;
     margin-left: 5%;
@@ -40,6 +89,7 @@ div {
 }
 
 .content {
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -52,36 +102,46 @@ div {
 }
 
 .image picture img {
+    content: "";
     border-radius: 5%;
     object-fit: cover;
     object-position: center;
+    position: absolute;
     width: 100%;
-    height: 95%;
+    height: 100%;
+    transition: 1s;
+    opacity: 0;
+    animation: fadeOut 0.5s;
+    animation-delay: 0s;
+    animation-fill-mode: forwards;
 }
 
 .image {
+    content: "";
+    border-radius: 5%;
     position: relative;
     width: 100%;
     height: 100%;
 }
 
 .container {
+    content: "";
     border-radius: 5%;
     width: 100%;
     height: 100%;
-    margin: 20px 0 0 0;
+    margin: 20px auto;
 }
 
 .container p {
     text-overflow: ellipsis;
     overflow: hidden;
-    width: 75%;
     white-space: nowrap;
     margin: 0;
     padding: 0;
 }
 
 .heart {
+    pointer-events: none;
     fill: rgba(0, 0, 0, 0.5);
     height: 24px;
     width: 24px;
@@ -92,44 +152,40 @@ div {
 }
 
 .heart path {
+    pointer-events: auto;
+    cursor: pointer;
     stroke: #ffffff;
     stroke-width: 2px;
 }
 
-.heart:hover {
-    height: 27px;
-    width: 27px;
+.bin {
+    fill: rgba(0, 0, 0, 0.5);
+    height: 24px;
+    width: 24px;
+    position: relative;
+    float: right;
+    margin: 0px 50px 0px -50px;
+    padding: 0;
+    opacity: 0;
 }
 
-.image:hover .image_suivante {
-    transition-property: all;
-    transition: 0.3s;
+.bin path {
+    pointer-events: auto;
+    cursor: pointer;
+    stroke: #ffffff;
+    stroke-width: 2px;
+}
+
+.image:hover .bin {
     opacity: 1;
 }
-
-.image button {
-    opacity: 0;
-    height: 30px; /*12*/
-    width: 30px;
-    stroke: currentcolor;
-    border-radius: 50%;
-    stroke-width: 2px;
-    overflow: visible;
-    float: right;
-    position: relative;
-    margin: 40% 10px 0px -50px;
-    padding: 0;
-}
-
 
 .star {
     position: relative;
     fill: currentcolor;
-    width: 150px;
-    display: block;
     float: right;
-    margin: -74px -107px 0px 0px;
-    padding: 0;
+    width: 50px;
+    margin: 0 -7px 0 0;
 }
 
 .star svg {
@@ -139,15 +195,13 @@ div {
     margin-right: 10px;
 }
 
-/* Carrousel */
-
 .carousel-inner {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    display: flex;
+    display: block;
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -157,30 +211,30 @@ div {
     width: 100%;
     height: auto;
 }
-.carousel-button {
-    transition-property: all;
-    transition: 0.3s;
-    opacity: 0;
-}
+
+/** Buttons */
 
 .carousel-button {
     display: inline-flex;
     border-radius: 50%;
     border: 1px solid rgba(0, 0, 0, 0.08);
     outline: none;
-    margin: 0px;
-    padding: 0px;
+    margin-top: 40%;
+    padding: 0;
     color: rgb(34, 34, 34);
     background-color: rgba(255, 255, 255, 0.9);
     cursor: pointer;
-    touch-action: manipulation;
     align-items: center;
     justify-content: center;
-    background-clip: padding-box;
-    box-shadow: transparent 0px 0px 0px 1px, transparent 0px 0px 0px 4px, rgb(0 0 0 / 18%) 0px 2px 4px;
-    transition: -ms-transform 0.25s ease 0s, -webkit-transform 0.25s ease 0s, transform 0.25s ease 0s;
     width: 32px;
     height: 32px;
+    transition-property: all;
+    transition: 0.3s;
+    opacity: 0;
+    stroke: currentcolor;
+    stroke-width: 2px;
+    overflow: visible;
+    position: relative;
 }
 
 .carousel-button svg {
@@ -193,6 +247,51 @@ div {
     overflow: visible;
 }
 
-.carousel:hover .carousel-button {
+.image:hover .previous, .image:hover .next {
     opacity: 1;
+}
+
+/* Next button */
+
+.carousel-button.next {
+    float: right;
+    margin-right: 10px;
+    padding: 0;
+}
+
+
+/* Previous button */
+
+.carousel-button.previous {
+    margin-left: 10px;
+    padding: 0;
+}
+
+/* keyframes */
+
+@keyframes shake {
+    0% {
+        transform: translate(5px);
+    }
+
+    30% {
+        transform: translate(0px);
+    }
+
+    60% {
+        transform: translate(-5px);
+    }
+
+    90% {
+        transform: translate(0px);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1
+    }
 }
