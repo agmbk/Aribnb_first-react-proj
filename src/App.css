@@ -1,8 +1,6 @@
 .App {
     margin: 0;
     padding: 0;
-    min-height: 100px;
-    overflow-x: hidden;
 }
 
 div {
@@ -17,12 +15,13 @@ div {
     text-align: center;
 }
 
+/** Form */
+
 .header input {
     background-color: rgba(220, 220, 220, 0.5);
     height: 30px;
     width: 150px;
     text-align: center;
-    margin-right: 10px;
     border: 2px solid white;
     border-radius: 5px;
     outline: none;
@@ -34,7 +33,51 @@ div {
     transition: 50ms;
 }
 
-.header input[type='file']{
+form {
+    margin: 0 auto;
+    width: 90%;height: 100%;
+    display: inline-block;
+}
+
+fieldset {
+    margin: 0 auto;
+    width: 90%;height: 100%;
+    border: 5px solid #000000;
+    border-radius: 1em;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #2d77ab;
+    column-gap: 70px;
+}
+
+fieldset legend {
+    margin-bottom: -30px;
+}
+
+fieldset p{
+    width: 280px;
+    box-sizing: border-box;
+
+    border: 1px solid #999;
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+}
+
+textarea {
+    vertical-align: top;
+    height: 5em;
+    resize: vertical;
+}
+
+label {
+    margin-right: 10px;
+    text-align: left;
+}
+
+.header input[type='file'] {
     position: relative;
     margin-top: 3px;
     margin-left: 3px;
@@ -43,26 +86,26 @@ div {
     z-index: 0;
 }
 
-.header input:last-child {
-    background-color: inherit;
-    height: 37px;
-    width: 150px;
-    cursor: pointer;
+
+.header input::placeholder {
+    text-align: center;
+    font-size: 15px;
+    transition: 0.5s;
 }
 
-.header p {
-
+input:focus::-webkit-input-placeholder {
+    transform: translateX(-0px) scale(3);
+    transition: 0.5s;
+    opacity: 0;
 }
-
 
 /** Carrousel */
 
 .carousel {
-    content: "";
     width: 90%;
     height: 100%;
     margin-left: 5%;
-    position: absolute;
+    position: relative;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     column-gap: 32px;
@@ -74,7 +117,6 @@ div {
         grid-template-columns: repeat(2, 1fr);
     }
 }
-
 
 @media (min-width: 900px) {
     .carousel {
@@ -89,7 +131,6 @@ div {
 }
 
 .content {
-    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -101,31 +142,24 @@ div {
     flex-direction: column;
 }
 
-.image picture img {
-    content: "";
+.image img {
     border-radius: 5%;
     object-fit: cover;
     object-position: center;
     position: absolute;
     width: 100%;
     height: 100%;
-    transition: 1s;
-    opacity: 0;
-    animation: fadeOut 0.5s;
-    animation-delay: 0s;
-    animation-fill-mode: forwards;
 }
 
 .image {
-    content: "";
     border-radius: 5%;
     position: relative;
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 
 .container {
-    content: "";
     border-radius: 5%;
     width: 100%;
     height: 100%;
@@ -153,27 +187,36 @@ div {
 
 .heart path {
     pointer-events: auto;
-    cursor: pointer;
     stroke: #ffffff;
     stroke-width: 2px;
 }
 
 .bin {
+    pointer-events: none;
     fill: rgba(0, 0, 0, 0.5);
-    height: 24px;
-    width: 24px;
+    height: 17px;
+    width: auto;
     position: relative;
     float: right;
-    margin: 0px 50px 0px -50px;
+    margin: 35px 14px 0 -50px;
     padding: 0;
     opacity: 0;
+    cursor: pointer;
+
+}
+
+.bin g {
+    pointer-events: none;
+    fill: #ff0000;
+    stroke: none;
 }
 
 .bin path {
     pointer-events: auto;
-    cursor: pointer;
-    stroke: #ffffff;
-    stroke-width: 2px;
+}
+
+.bin g path {
+    pointer-events: auto;
 }
 
 .image:hover .bin {
@@ -237,6 +280,10 @@ div {
     position: relative;
 }
 
+.carousel-button:hover {
+    filter: drop-shadow( 0 0 5px rgba(0, 0, 0, 0.7));
+}
+
 .carousel-button svg {
     display: block;
     fill: none;
@@ -287,11 +334,46 @@ div {
     }
 }
 
-@keyframes fadeOut {
+@keyframes fadeInNext {
     0% {
         opacity: 0;
+        transform: translateX(100%);
     }
     100% {
-        opacity: 1
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInPrevious {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeOutNext {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes fadeOutPrevious {
+    0% {
+        opacity: 1;
+        transform: translateX(-100%);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(0);
     }
 }
