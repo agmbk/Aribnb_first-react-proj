@@ -10,28 +10,12 @@ div {
 /* Header */
 .header {
     overflow: hidden;
-    background-color: #2d77ab;
-    padding: 20px 10px;
+    background-color: rgb(61 129 177);
+    padding: 0 10px 20px;
     text-align: center;
 }
 
 /** Form */
-
-.header input {
-    background-color: rgba(220, 220, 220, 0.5);
-    height: 30px;
-    width: 150px;
-    text-align: center;
-    border: 2px solid white;
-    border-radius: 5px;
-    outline: none;
-}
-
-.header input[type='date'] {
-    transform: scaleY(1.05) scaleX(1.01);
-    margin-right: 13px;
-    transition: 50ms;
-}
 
 form {
     margin: 0 auto;
@@ -42,28 +26,32 @@ form {
 fieldset {
     margin: 0 auto;
     width: 90%;height: 100%;
-    border: 5px solid #000000;
+    border: 5px solid rgba(22, 50, 89, 0.58);
     border-radius: 1em;
     text-align: center;
     justify-content: center;
     display: flex;
     flex-wrap: wrap;
-    background-color: #2d77ab;
     column-gap: 70px;
 }
 
 fieldset legend {
-    margin-bottom: -30px;
+    margin-left: 10%;
+    text-align: left;
+    margin-bottom: -20px;
 }
 
 fieldset p{
     width: 280px;
     box-sizing: border-box;
-
-    border: 1px solid #999;
+    border: 1px solid #000000;
+    border-radius: 5px;
     display: flex;
     justify-content: space-between;
-    height: 100%;
+    height: 40px;
+    overflow: hidden;
+    position: relative;
+    align-items: center;
 }
 
 textarea {
@@ -72,30 +60,66 @@ textarea {
     resize: vertical;
 }
 
-label {
-    margin-right: 10px;
-    text-align: left;
+fieldset p label {
+    background-color: rgb(61 129 177);
+    margin: 0 auto;
+    text-align: center;
+}
+
+.header input {
+    background-color: rgb(132 169 195);
+    height: 100%;
+    width: 55%;
+    text-align: center;
+    border: none;
+    outline: none;
+}
+
+.header input[type="submit"] {
+    font-size: 20px;
+    color: #000000;
+    width: 100%;
+    cursor: pointer;
+
+}
+
+.header #label-file {
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 120%;
+    width: 45%;
 }
 
 .header input[type='file'] {
-    position: relative;
-    margin-top: 3px;
-    margin-left: 3px;
-    height: 30px;
-    width: 100px;
-    z-index: 0;
+    height: 125%;
+    padding-top: 8px;
+    margin: 0 auto auto 35px;
+    width: 100%;
+}
+
+.header p div {
+    z-index: 5;
+    position: absolute;
+    background-color: rgb(132 169 195);
+    height: 125%;
+    padding-top: 8px;
+    width: 50%;
 }
 
 
 .header input::placeholder {
+    margin: 0 auto;
+    padding-bottom: 10px;
     text-align: center;
     font-size: 15px;
-    transition: 0.5s;
+    transition: 0.2s;
 }
 
 input:focus::-webkit-input-placeholder {
-    transform: translateX(-0px) scale(3);
-    transition: 0.5s;
+    transform: translateX(-0px) scale(2);
     opacity: 0;
 }
 
