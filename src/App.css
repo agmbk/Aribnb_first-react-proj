@@ -100,6 +100,10 @@ fieldset p label {
     width: 100%;
 }
 
+.header input[type='date']::-webkit-calendar-picker-indicator {
+    padding-right: 15px;
+}
+
 .header p div {
     z-index: 5;
     position: absolute;
