@@ -17,11 +17,11 @@ class App extends React.Component {
 		this.state = {
 			location: locations,
 		};
-		console.log( this.state.location );
+		console.log('App');
 	}
 	
 	removeElement(id) {
-		console.log( 'removing', this.state.location );
+		console.log( 'removing', id );
 		const temp = this.state.location;
 		console.log( this.state.location, temp );
 		temp.splice( id, 1 );
@@ -62,6 +62,7 @@ class App extends React.Component {
 	}
 	
 	render() {
+		console.log('App rendering');
 		return (
 			<>
 				<Header addElement={this.addElement} ></Header>

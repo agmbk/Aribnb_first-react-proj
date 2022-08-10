@@ -19,6 +19,7 @@ export class Header extends React.Component {
 			},
 			submit: null,
 		}
+		console.log('Header');
 	}
 	
 	errorReset() {
@@ -90,6 +91,7 @@ export class Header extends React.Component {
 	}
 	
 	render() {
+		console.log('Header rendering');
 		return (
 			<header>
 				

@@ -16,6 +16,7 @@ export class Carousel extends React.Component {
 			imageASrc: 0,
 			imageBSrc: 0,
 		};
+		console.log('Carousel');
 	};
 	
 	heartAdd() {
@@ -38,7 +39,7 @@ export class Carousel extends React.Component {
 	}
 	
 	render() {
-		console.log('BARAMEX !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+		console.log('Carousel rendering');
 		return (
 			<div className="container">
 				<div className="image">
