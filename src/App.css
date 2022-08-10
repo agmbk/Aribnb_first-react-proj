@@ -101,7 +101,7 @@ fieldset p label {
 }
 
 .header input[type='date']::-webkit-calendar-picker-indicator {
-    padding-right: 15px;
+    padding-right: 20px;
 }
 
 .header p div {
