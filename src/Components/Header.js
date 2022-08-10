@@ -48,14 +48,14 @@ export class Header extends React.Component {
 			if (!event.target.place.value) {place = shake;}
 			if (!event.target.dateA.value) {dateA = shake;}
 			if (!event.target.dateB.value) {dateB = shake;}
-			if (!event.target.file.files.length) {file = shake;}
-			if (event.target.dateA.value >= event.target.dateB.value) {
+			else if (event.target.dateA.value >= event.target.dateB.value) {
 				dateA = {
 					borderColor: 'red',
 					animation: `shake ${animation_time}s`,
 				};
 				dateB = {borderColor: 'red', animation: `shake ${animation_time}s`};
 			}
+			if (!event.target.file.files.length) {file = shake;}
 			
 			if (!event.target.price.value || isNaN( event.target.price.value )) {
 				price = {
