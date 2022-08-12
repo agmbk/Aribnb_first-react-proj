@@ -1,6 +1,6 @@
 import React from "react";
 
-export const removeElement = (element) => {
+export const removeElement = (list, element) => {
 	/**
 	 * Removes a location
 	 */

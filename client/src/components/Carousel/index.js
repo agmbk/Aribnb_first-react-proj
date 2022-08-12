@@ -47,7 +47,7 @@ class Carousel extends PureComponent {
 		console.log( 'Carousel rendering', this.props.index );
 		return (
 			<div className="container">
-				<picture>
+				<div className="image">
 					<img style={this.state.imageBStyle} className={'picture second'}
 					     src={this.props.location.contextualPictures[this.state.imageBSrc]}
 					     alt={this.props.location.title}/>
@@ -75,7 +75,7 @@ class Carousel extends PureComponent {
 					</div>
 					{buttonPrevious( this )}{buttonNext( this )}
 				
-				</picture>
+				</div>
 				<div className="wrapper">
 					<div className="star">
 						<p>

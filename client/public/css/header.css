@@ -1,0 +1,142 @@
+/* Header */
+header {
+    background-color: rgb(61 129 177);
+    padding: 0;
+    margin: 0;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    position: sticky;
+    display: block;
+    z-index: 100;
+}
+
+#formDisplay{
+    opacity: 0;
+    width: 100%;
+    position: absolute;
+    display: block;
+    z-index: 1;
+}
+
+/** Form */
+
+form {
+    margin: 0 auto;
+    padding: 0 0 10px;
+    width: 90%;
+    height: 100%;
+    display: none;
+    text-align: center;
+    position: relative;
+}
+
+#formDisplay:checked~form {
+    animation: popFromTop 0.3s;
+    display: block;
+}
+
+fieldset {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    height: 100%;
+    border: 5px solid rgba(22, 50, 89, 0.58);
+    border-radius: 1em;
+    text-align: center;
+    padding: 10px 0;
+    flex-wrap: wrap;
+    column-gap: 70px;
+}
+
+fieldset legend {
+    margin-left: 10%;
+    text-align: left;
+    margin-bottom: -20px;
+}
+
+fieldset p {
+    width: 280px;
+    box-sizing: border-box;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    overflow: hidden;
+    position: relative;
+    align-items: center;
+    z-index: 5;
+}
+
+textarea {
+    vertical-align: top;
+    height: 5em;
+    resize: vertical;
+}
+
+fieldset p label {
+    background-color: rgb(61 129 177);
+    margin: 0 auto;
+    text-align: center;
+}
+
+header input {
+    background-color: rgb(132 169 195);
+    height: 100%;
+    width: 55%;
+    text-align: center;
+    border: none;
+    outline: none;
+}
+
+header input[type="submit"] {
+    font-size: 20px;
+    color: #000000;
+    width: 100%;
+    cursor: pointer;
+
+}
+
+header #label-file {
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 120%;
+    width: 45%;
+}
+
+header input[type='file'] {
+    height: 125%;
+    margin: 0 auto auto 25px;
+    padding-top: 3px;
+    width: 100%;
+    font-size: 15px;
+}
+
+header input[type='date']::-webkit-calendar-picker-indicator {
+    padding-right: 20px;
+}
+
+header p p {
+    z-index: 5;
+    position: absolute;
+    background-color: rgb(132 169 195);
+    border: none;
+    height: 125%;
+    padding-top: 8px;
+    width: 50%;
+}
+
+
+header input::placeholder {
+    transition: 0.2s;
+}
+
+input:focus::-webkit-input-placeholder {
+    transform: translateX(-0px) scale(2);
+    opacity: 0;
+}

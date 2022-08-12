@@ -1,0 +1,7 @@
+/* Header */
+footer {
+    overflow: hidden;
+    background-color: rgb(61 129 177);
+    padding: 10px 0 20px;
+    text-align: center;
+}
