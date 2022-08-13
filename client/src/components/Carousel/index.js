@@ -139,8 +139,10 @@ class Carousel extends PureComponent {
 						     src={this.props.location.contextualPictures[this.state.imageASrc]}
 						     alt={this.props.location.title}/>
 					</div>
-					<InteractionWrapper key={this.props.index} previous={this.previous} next={this.next} heartAdd={this.heartAdd}
-					location={this.props.location} heart={this.state.heart} removeElement={this.props.removeElement}/>
+					<InteractionWrapper key={this.props.index} previous={this.previous} next={this.next}
+					                    heartAdd={this.heartAdd}
+					                    location={this.props.location} heart={this.state.heart}
+					                    removeElement={this.props.removeElement}/>
 				</div>
 				<div className="description">
 					<p className="title"><strong>{this.props.location.title}</  strong></p>

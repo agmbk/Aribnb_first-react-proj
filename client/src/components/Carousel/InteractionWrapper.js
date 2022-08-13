@@ -1,4 +1,4 @@
-import React, { Component, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 
 class InteractionWrapper extends PureComponent {
 	/**
@@ -16,11 +16,11 @@ class InteractionWrapper extends PureComponent {
 			imageBSrc: 0,
 			timer: null,
 		};
-		console.log('interactionWrapper');
+		console.log( 'interactionWrapper' );
 	}
 	
 	render() {
-		console.log('render interactionWrapper');
+		console.log( 'render interactionWrapper' );
 		return (
 			<div className="interactionWrapper">
 				<div className="actions">
@@ -44,11 +44,12 @@ class InteractionWrapper extends PureComponent {
 					</div>
 				</div>
 				<div className="buttons">
-					<button type="button" className="carousel-button previous" onClick={event => this.props.previous( )}><span><svg
+					<button type="button" className="carousel-button previous" onClick={event => this.props.previous()}><span><svg
 						viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="none"><path
 						d="m20 28-11.29289322-11.2928932c-.39052429-.3905243-.39052429-1.0236893 0-1.4142136l11.29289322-11.2928932"></path></g></svg></span>
 					</button>
-					<button type="button" className="carousel-button next" onClick={event => this.props.next( this )}><span><svg
+					<button type="button" className="carousel-button next"
+					        onClick={event => this.props.next( this )}><span><svg
 						viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="none"><path
 						d="m12 4 11.2928932 11.2928932c.3905243.3905243.3905243 1.0236893 0 1.4142136l-11.2928932 11.2928932"></path></g></svg></span>
 					</button>
@@ -57,4 +58,5 @@ class InteractionWrapper extends PureComponent {
 		);
 	}
 }
-export default InteractionWrapper
+
+export default InteractionWrapper;

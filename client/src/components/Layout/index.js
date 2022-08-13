@@ -5,13 +5,8 @@ import Footer from './Footer';
 const Layout = ({children, addElement}) => (
 	<>
 		<Header addElement={addElement}/>
-		
-		<div style={{position: 'relative', marginTop: 'inherit'}}>
-			{children}
-		</div>
-		
+		{children}
 		<Footer/>
-	
 	</>
 );
 

@@ -72,3 +72,54 @@
         transform: translateY(0);
     }
 }
+
+/** Loader */
+
+.lds-ringWrapper {
+    display: block;
+    position: relative;
+    width: 100%; height: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    top:0;
+    bottom: 0;
+}
+
+.lds-ring {
+    display: inline-block;
+    position: page;
+    margin: 40vh auto auto -80px;
+    width: 80px;
+    height: 80px;
+    bottom: 0;
+}
+
+.lds-ring div {
+    box-sizing: border-box;
+    display: inline-block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    border: 8px solid;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: rgb(61 129 177) transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
