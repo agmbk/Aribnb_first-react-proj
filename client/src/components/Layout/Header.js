@@ -90,55 +90,54 @@ class Header extends PureComponent {
 	render() {
 		console.log( 'Header rendering' );
 		return (
-				<header id={'header'}>
-					<input type="checkbox" id="formDisplay"/>
-					<label htmlFor={'formDisplay'}>
-				
+			<header id={'header'}>
+				<input type="checkbox" id="formDisplay"/>
+				<label htmlFor={'formDisplay'}>
 					<h2>Add a new location</h2>
-					</label>
-					
-					<form onSubmit={event => this.formChecker( event )}>
-						<fieldset>
-							
-							<p style={this.state.error.title}>
-								<label>Location</label>
-								<input autoComplete="off"
-								       placeholder="Location" id={'title'}/>
-							</p>
-							
-							<p style={this.state.error.checkin}>
-								<label>Starting date</label>
-								<input type="date" autoComplete="off" name="checkin"
-								       id="checkin"/>
-							</p>
-							
-							<p style={this.state.error.checkout}>
-								<label>Ending date</label>
-								<input type="date" autoComplete="off" name="checkout"
-								       id="checkout"/>
-							</p>
-							
-							<p style={this.state.error.price}>
-								<label>Price</label>
-								<input autoComplete="off" placeholder="Price"
-								       id={'price'}/>
-							</p>
-							
-							<p style={this.state.error.file}>
-								<label id={'label-file'} htmlFor={'file'}>Add image</label>
-								<p></p>
-								<input autoComplete="off" placeholder="Images" type="file" multiple accept={'image/*'}
-								       id={'file'}/>
-							</p>
-							<div>
-								<p style={this.state.submit}>
-									<input className={'submit'} type="submit" value="Ajouter"/>
-								</p>
-							</div>
-						</fieldset>
-					</form>
+				</label>
 				
-				</header>
+				<form onSubmit={event => this.formChecker( event )}>
+					<fieldset>
+						
+						<p style={this.state.error.title}>
+							<label>Location</label>
+							<input autoComplete="off"
+							       placeholder="Location" id={'title'}/>
+						</p>
+						
+						<p style={this.state.error.checkin}>
+							<label>Starting date</label>
+							<input type="date" autoComplete="off" name="checkin"
+							       id="checkin"/>
+						</p>
+						
+						<p style={this.state.error.checkout}>
+							<label>Ending date</label>
+							<input type="date" autoComplete="off" name="checkout"
+							       id="checkout"/>
+						</p>
+						
+						<p style={this.state.error.price}>
+							<label>Price</label>
+							<input autoComplete="off" placeholder="Price"
+							       id={'price'}/>
+						</p>
+						
+						<p style={this.state.error.file}>
+							<label id={'label-file'} htmlFor={'file'}>Add image</label>
+							<span></span>
+							<input autoComplete="off" placeholder="Images" type="file" multiple accept={'image/*'}
+							       id={'file'}/>
+						</p>
+						<div>
+							<p style={this.state.submit}>
+								<input className={'submit'} type="submit" value="Ajouter"/>
+							</p>
+						</div>
+					</fieldset>
+				</form>
+			
+			</header>
 		);
 	}
 }

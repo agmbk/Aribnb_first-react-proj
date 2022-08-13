@@ -4,46 +4,40 @@ export const removeElement = (list, element) => {
 	/**
 	 * Removes a location
 	 */
-	const index = this.state.locations.indexOf( element );
-	console.log( 'removing element', index, ':', element.title );
-	const temp = this.state.locations;
-	temp.splice( index, 1 );
-	this.setState( {
-		location: temp,
-	} );
+	console.log( 'removing element :', element.title );
+	list.splice( list.indexOf( element ), 1 );
+	return [...list]
 }
 
-export const addElement = (target) => {
+export const addElement = (list, element) => {
 	/**
 	 * Add a new location
 	 */
-	this.setState( {
-		locations: [
-			...this.state.locations,
+	return [
+			...list,
 			{
-				id: this.state.locations.at( -1 ).id + 1,
+				id: list.at( -1 ).id + 1,
 				rating: 'Nouveau',
-				contextualPictures: Array.from( target.file.files ).map( URL.createObjectURL ),
-				title: target.title.value,
-				checkin: target.checkin.value,
-				checkout: target.checkout.value,
-				price: target.price.value,
+				contextualPictures: Array.from( element.file.files ).map( URL.createObjectURL ),
+				title: element.title.value,
+				checkin: element.checkin.value,
+				checkout: element.checkout.value,
+				price: element.price.value,
 				qualifier: 'nuit',
 			},
-		],
-	} );
-	console.log( this.state.locations );
+		]
+	
 	/*
 	 const e = {
-	 id: this.state.locations.at( -1 ).id + 1,
-	 place: target.place.value,
+	 id: list.at( -1 ).id + 1,
+	 place: element.place.value,
 	 date: formatDate().toLowerCase(),
-	 price: target.price.value,
-	 img: Array.from( target.file.files ).map( URL.createObjectURL ),
+	 price: element.price.value,
+	 img: Array.from( element.file.files ).map( URL.createObjectURL ),
 	 }
 	 this.elementsCount += 1;
 	 console.log(this.elementsCount);
-	 console.log( 'New element', target.place.value, target.dateA.value, target.price.value );
+	 console.log( 'New element', element.place.value, element.dateA.value, element.price.value );
 	 return(
 	 <Index location={e} key={e.id} index={this.elementsCount}
 	 removeElement={this.removeElement}></Index>

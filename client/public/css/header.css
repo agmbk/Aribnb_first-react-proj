@@ -1,14 +1,12 @@
 /* Header */
 header {
     background-color: rgb(61 129 177);
-    padding: 0;
-    margin: 0;
     top: 0;
     width: 100%;
     text-align: center;
     position: sticky;
     display: block;
-    z-index: 100;
+    z-index: 1000;
 }
 
 #formDisplay{
@@ -45,7 +43,7 @@ fieldset {
     border: 5px solid rgba(22, 50, 89, 0.58);
     border-radius: 1em;
     text-align: center;
-    padding: 10px 0;
+    padding: 10px;
     flex-wrap: wrap;
     column-gap: 70px;
 }
@@ -70,11 +68,6 @@ fieldset p {
     z-index: 5;
 }
 
-textarea {
-    vertical-align: top;
-    height: 5em;
-    resize: vertical;
-}
 
 fieldset p label {
     background-color: rgb(61 129 177);
@@ -117,11 +110,15 @@ header input[type='file'] {
     font-size: 15px;
 }
 
+header input[type='date'] {
+    color: #3b3b3b;
+}
+
 header input[type='date']::-webkit-calendar-picker-indicator {
     padding-right: 20px;
 }
 
-header p p {
+header p span {
     z-index: 5;
     position: absolute;
     background-color: rgb(132 169 195);

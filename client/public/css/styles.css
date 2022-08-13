@@ -4,6 +4,13 @@ html {
     padding: 0;
 }
 
+body {
+    scroll-behavior: smooth;
+    background-color: #121212;
+    color: #f0f0f0;
+    padding-bottom: 50px;
+}
+
 div {
     display: block;
 }

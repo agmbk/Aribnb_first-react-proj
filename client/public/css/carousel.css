@@ -3,12 +3,12 @@
 .carousel {
     width: 90%;
     height: 100%;
-    margin: 0px auto 150px 5%;
+    margin: 20px auto 100px;
     position: relative;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    column-gap: 32px;
-    row-gap: 100px;
+    column-gap: 10px;
+    row-gap: 30px;
 }
 
 @media (min-width: 550px) {
@@ -29,19 +29,30 @@
     }
 }
 
-.content {
-    position: absolute;
-    top: 0;
-    left: 0;
+.container {
+    border-radius: 5%;
+    display: block;
+    position: relative;
     width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    margin: 0;
 }
 
-.image img {
+/* Carrousel pictures */
+
+.picturesWrapper {
+    position: relative;
+    width: 100%;
+}
+
+.pictures {
+    border-radius: 5%;
+    position: relative;
+    display: block;
+    aspect-ratio: 1.1/1;
+    overflow: hidden;
+}
+
+.pictures img {
     border-radius: 5%;
     object-fit: cover;
     object-position: center;
@@ -50,107 +61,111 @@
     height: 100%;
 }
 
-.image {
-    border-radius: 5%;
-    position: relative;
+/* Carrousel description */
+
+.description {
+    display: grid;
     width: 100%;
-    height: 100%;
-    overflow: hidden;
+    grid-template-columns: auto auto;
 }
 
-.container {
-    border-radius: 5%;
-    width: 100%;
-    height: 100%;
-    margin: 20px auto;
+.description .title {
+    grid-column: 1 / 2;
+    grid-row: 1;
 }
-
-.container p {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    margin: 0;
-    padding: 0;
+.description .date {
+    grid-column: 1 / 2;
+    grid-row: 2;
 }
-
-.heart {
-    pointer-events: none;
-    fill: rgba(0, 0, 0, 0.5);
-    height: 24px;
-    width: 24px;
-    position: relative;
-    float: right;
-    margin: 5px 10px 0px -50px;
-    padding: 0;
+.description .price {
+    grid-column: 1 / 2;
+    grid-row: 3;
 }
-
-.heart path {
-    pointer-events: auto;
-    stroke: #ffffff;
-    stroke-width: 2px;
-}
-
-.bin {
-    pointer-events: none;
-    fill: rgba(0, 0, 0, 0.5);
-    height: 17px;
-    width: auto;
-    position: relative;
-    float: right;
-    margin: 35px 14px 0 -50px;
-    padding: 0;
-    opacity: 0;
-    cursor: pointer;
-}
-
-.bin g {
-    pointer-events: none;
-    fill: #ff0000;
-    stroke: none;
-}
-
-.bin path {
-    pointer-events: auto;
-}
-
-.bin g path {
-    pointer-events: auto;
-}
-
-.image:hover .bin {
-    opacity: 1;
-}
-
-.star {
-    position: relative;
+.description .star {
+    grid-column: 2;
+    grid-row: 1 / 3;
     fill: currentcolor;
-    float: right;
-    width: 50px;
-    margin: 0 -7px 0 0;
+    text-align: right;
 }
 
-.star svg {
+.description .star svg {
     height: 12px;
     width: 12px;
     fill: currentcolor;
     margin-right: 10px;
+    margin-bottom: 3px;
 }
 
-.carousel-inner {
+.description p {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0;
+}
+/* Carrousel buttons */
+
+.interactionWrapper {
     position: absolute;
+    align-items: center;
     top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
-    display: block;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
 }
 
-.carousel-inner img {
+.interactionWrapper .actions {
+    position: absolute;
+    display: grid;
+    grid-template-rows: 30px 30px;
+    grid-template-columns: auto;
+    padding-right: 13px;
+    right: 0;
+    top: 7px;
+    margin: 0 auto;
+}
+
+.interactionWrapper .actions div {
+    text-align: right;
+    margin: 0 auto;
+}
+.interactionWrapper .buttons {
     width: 100%;
-    height: auto;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/** Svg */
+
+.interactionWrapper .actions .heart {
+    pointer-events: none;
+    fill: rgba(0, 0, 0, 0.5);
+    height: 24px;
+    width: 24px;
+}
+
+.heart path {
+    pointer-events: auto;
+    cursor: pointer;
+    stroke: #ffffff;
+    stroke-width: 2px;
+}
+
+.interactionWrapper .actions .bin {
+    cursor: pointer;
+    fill: rgba(0, 0, 0, 0.5);
+    height: 17px;
+    width: auto;
+    opacity: 0;
+}
+
+.bin g {
+    fill: #be0000;
+    stroke: none;
+}
+
+.picturesWrapper:hover .bin {
+    opacity: 1;
 }
 
 /** Buttons */
@@ -159,11 +174,12 @@
     display: inline-flex;
     border-radius: 50%;
     border: 1px solid rgba(0, 0, 0, 0.08);
-    outline: none;
-    margin-top: 40%;
-    padding: 0;
     color: rgb(34, 34, 34);
     background-color: rgba(255, 255, 255, 0.9);
+    opacity: 0;
+    stroke: currentcolor;
+    stroke-width: 2px;
+    outline: none;
     cursor: pointer;
     align-items: center;
     justify-content: center;
@@ -171,9 +187,6 @@
     height: 32px;
     transition-property: all;
     transition: 0.3s;
-    opacity: 0;
-    stroke: currentcolor;
-    stroke-width: 2px;
     overflow: visible;
     position: relative;
 }
@@ -192,22 +205,16 @@
     overflow: visible;
 }
 
-.image:hover .previous, .image:hover .next {
+.picturesWrapper:hover .previous,
+.picturesWrapper:hover .next {
     opacity: 1;
 }
-
-/* Next button */
 
 .carousel-button.next {
     float: right;
     margin-right: 10px;
-    padding: 0;
 }
-
-
-/* Previous button */
 
 .carousel-button.previous {
     margin-left: 10px;
-    padding: 0;
 }

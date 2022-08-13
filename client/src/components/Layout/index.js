@@ -1,19 +1,17 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 
-const Layout = ({children}) => (
+const Layout = ({children, addElement}) => (
 	<>
-	
-				<Header/>
-			
-<div style={{position: 'relative', marginTop: 'inherit'}}>
+		<Header addElement={addElement}/>
+		
+		<div style={{position: 'relative', marginTop: 'inherit'}}>
 			{children}
-</div>
-			<div className="fixed-bottom">
-				<Footer/>
-			</div>
+		</div>
+		
+		<Footer/>
+	
 	</>
 );
 
