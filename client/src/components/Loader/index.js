@@ -1,16 +1,14 @@
 import React from 'react';
+import ring from './ring';
+import ripple from './ripple';
 
-const Loader = () => {
-	return (
-		<div className="lds-ringWrapper">
-			<div className="lds-ring">
-				<div></div>
-				<div></div>
-				<div></div>
-				<div></div>
-			</div>
-		</div>
-	);
+
+const Loader = ({animation}) => {
+	if (animation === 'ripple') {
+		return ripple;
+	} else if (animation === 'ring') {
+		return ring;
+	}
 };
 
 export default Loader;

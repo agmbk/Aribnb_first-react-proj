@@ -1,20 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Layout from './Layout';
 import Loader from './Loader';
 import Carousel from './Carousel';
+import useLocationList from '../lib/hooks/useLocationList';
+
 
 function App() {
-	const [data, setData] = React.useState( null );
-	
-	React.useEffect( () => {
-		fetch( '/api/locations' )
-			.then( (res) => {
-				console.log( 'fetch locations', res.status );
-				return res.json();
-			} )
-			.then( (data) => setData( data ) );
-	}, [] );
+	const locations = useLocationList();
+	useEffect();
 	/*
 	 constructor(props) {
 	 super( props );
@@ -57,16 +51,16 @@ function App() {
 		<Router>
 			<Layout addElement={this} children={
 				<>
-					{data ?
+					{locations ?
 						<div className="carousel">
-							{Object.values( data )[0].map( e => {
+							{locations.map( e => {
 								if (e.id < 100) {
 									return <Carousel location={e} key={e.id} index={e.id}
 									                 removeElement={this}></Carousel>;
 								}
 							} )}
 						</div>
-						: <Loader/>}
+						: <Loader animation="ripple"/>}
 				</>
 			}/>
 		</Router>

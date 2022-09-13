@@ -10,7 +10,7 @@
     "dev": "start npm run start && cd client && start npm run start"
   },
   "keywords": [],
-  "author": "",
+  "author": "Toka",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.1"
