@@ -2,9 +2,9 @@ import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
 
-const Layout = ({children, addElement}) => (
+const Layout = ({children, setLocations}) => (
 	<>
-		<Header addElement={addElement}/>
+		<Header setLocations={setLocations}/>
 		{children}
 		<Footer/>
 	</>

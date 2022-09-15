@@ -1,25 +1,24 @@
-import React, { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Layout from './Layout';
 import Loader from './Loader';
 import Carousel from './Carousel';
-import useLocationList from '../lib/hooks/useLocationList';
 
 
 function App() {
-	const locations = useLocationList();
-	useEffect();
+	const [locations, setLocations] = useState();
+	
+	useEffect( () => {
+		fetch( '/api/locations', {method: 'GET'} )
+			.then( (res) => {
+				console.log( 'fetch locations', res.status );
+				return res.json();
+			} )
+			.then( (data) => {setLocations( data.locations );} );
+		console.log( locations );
+	}, [] );
+	
 	/*
-	 constructor(props) {
-	 super( props );
-	 this.addElement = this.addElement.bind( this );
-	 this.removeElement = this.removeElement.bind( this );
-	 this.state = {
-	 location: locations,
-	 };
-	 console.log( 'App' );
-	 
-	 /*
 	 Code to get items from Airbnb json
 	 let temp = locations.map( (e, i) => ({
 	 id: i,
@@ -31,36 +30,21 @@ function App() {
 	 price: e.pricingQuote.structuredStayDisplayPrice.primaryLine.price,
 	 qualifier: e.pricingQuote.structuredStayDisplayPrice.primaryLine.qualifier,
 	 }) );
-	 
-	 }
-	 
-	 removeElement(element) {
-	 this.setState( {
-	 location: removeElement( this.state.location, element ),
-	 } );
-	 }
-	 
-	 addElement(element) {
-	 this.setState( {
-	 location: addElement( this.state.location, element ),
-	 } );
 	 }
 	 */
 	
 	return (
 		<Router>
-			<Layout addElement={this} children={
+			<Layout addElement={this} setLocations={setLocations} children={
 				<>
 					{locations ?
 						<div className="carousel">
 							{locations.map( e => {
-								if (e.id < 100) {
-									return <Carousel location={e} key={e.id} index={e.id}
-									                 removeElement={this}></Carousel>;
-								}
+								console.log( e );
+								return <Carousel location={e} key={e.id} setLocations={setLocations}></Carousel>;
 							} )}
 						</div>
-						: <Loader animation="ripple"/>}
+						: <Loader animation="animation"/>}
 				</>
 			}/>
 		</Router>

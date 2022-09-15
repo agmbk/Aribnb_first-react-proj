@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { removeElement } from '../../lib/hooks/elementHandler';
 
 class InteractionWrapper extends PureComponent {
 	/**
@@ -7,13 +8,8 @@ class InteractionWrapper extends PureComponent {
 	 */
 	constructor(props) {
 		super( props );
-		
 		this.state = {
-			heart: null,
-			imageAStyle: null,
-			imageBStyle: null,
-			imageASrc: 0,
-			imageBSrc: 0,
+			heart: false,
 			timer: null,
 		};
 		console.log( 'interactionWrapper' );
@@ -25,7 +21,13 @@ class InteractionWrapper extends PureComponent {
 			<div className="interactionWrapper">
 				<div className="actions">
 					<div>
-						<svg className="heart" onClick={event => this.props.heartAdd()} style={this.props.heart}
+						<svg className="heart"
+						     onClick={() => this.setState( (prevState) => {return {heart: !prevState.heart};} )}
+						     style={this.state.heart ? {
+							     fill: 'red',
+							     transform: 'rotate(360deg) scale(1.2)',
+							     transition: '0.3s',
+						     } : {}}
 						     viewBox="0 0 32 32"
 						     xmlns="http://www.w3.org/2000/svg" role="presentation" focusable="false">
 							<path
@@ -33,7 +35,8 @@ class InteractionWrapper extends PureComponent {
 						</svg>
 					</div>
 					<div>
-						<svg className="bin" onClick={event => this.props.removeElement( this.props.location )}
+						<svg className="bin"
+						     onClick={() => this.props.setLocations( (prevState) => {removeElement( prevState, this.props.location );} )}
 						     width="1280.000000pt" height="1280.000000pt"
 						     viewBox="0 0 1280.000000 1280.000000">
 							<g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)">
@@ -44,12 +47,16 @@ class InteractionWrapper extends PureComponent {
 					</div>
 				</div>
 				<div className="buttons">
-					<button type="button" className="carousel-button previous" onClick={event => this.props.previous()}><span><svg
+					<button id={'previous'}
+					        style={this.props.buttonPrevVisible ? {} : {visibility: 'hidden', opacity: '0'}}
+					        type="button" className="carousel-button previous"
+					        onClick={() => this.props.previous()}><span><svg
 						viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="none"><path
 						d="m20 28-11.29289322-11.2928932c-.39052429-.3905243-.39052429-1.0236893 0-1.4142136l11.29289322-11.2928932"></path></g></svg></span>
 					</button>
-					<button type="button" className="carousel-button next"
-					        onClick={event => this.props.next( this )}><span><svg
+					<button id={'next'} style={this.props.buttonNextVisible ? {} : {visibility: 'hidden', opacity: '0'}}
+					        type="button" className="carousel-button next"
+					        onClick={() => this.props.next( this )}><span><svg
 						viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="none"><path
 						d="m12 4 11.2928932 11.2928932c.3905243.3905243.3905243 1.0236893 0 1.4142136l-11.2928932 11.2928932"></path></g></svg></span>
 					</button>

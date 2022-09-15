@@ -1,14 +1,14 @@
 import React from 'react';
-import ring from './ring';
-import ripple from './ripple';
 
-
-const Loader = ({animation}) => {
-	if (animation === 'ripple') {
-		return ripple;
-	} else if (animation === 'ring') {
-		return ring;
-	}
+/**
+ *
+ * @return {JSX.Element}
+ * @constructor
+ */
+const Loader = () => {
+	return <div className="animation">
+		<span className="loader"></span>
+	</div>;
 };
 
 export default Loader;

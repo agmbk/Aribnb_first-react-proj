@@ -9,7 +9,6 @@ class Carousel extends PureComponent {
 	constructor(props) {
 		super( props );
 		this.next = this.next.bind( this );
-		this.heartAdd = this.heartAdd.bind( this );
 		this.previous = this.previous.bind( this );
 		this.formatDate = this.formatDate.bind( this );
 		this.state = {
@@ -18,9 +17,10 @@ class Carousel extends PureComponent {
 			imageBStyle: null,
 			imageASrc: 0,
 			imageBSrc: 0,
-			timer: null,
+			buttonPrevVisible: false,
+			buttonNextVisible: props.location.contextualPictures.length !== 1,
 		};
-		console.log( 'Carousel', this.props.index );
+		console.log( 'Carousel', props.location.id );
 	};
 	
 	componentDidMount() {
@@ -28,38 +28,21 @@ class Carousel extends PureComponent {
 	}
 	
 	componentWillUnmount() {
-		clearTimeout( this.state.timer );
+		//clearTimeout( this.state.timer );
 	}
 	
-	autoChangeImage() {
-		console.log( 'change' );
-		if (Math.random() > 0.7) {
-		
-		}
-	}
-	
-	heartAdd() {
-		/**
-		 * Add location to favorites
-		 */
-		if (this.state.heart) {
-			this.setState( {heart: null} );
-			console.log( `Location ${this.props.location.id} removed of bookmarks` );
-			
-		} else {
-			this.setState( {heart: {fill: 'red', transform: 'rotate(360deg) scale(1.2)', transition: '0.3s'}} );
-			console.log( `Location ${this.props.location.id} added to bookmarks` );
-		}
-	}
 	
 	next() {
 		/**
 		 * Slides in images
 		 */
 		const animation_time = 0.1; /* secondes */
+		
 		if (this.state.imageASrc < this.props.location.contextualPictures.length - 1) {
 			
 			this.setState( {
+				buttonNextVisible: this.state.imageASrc !== this.props.location.contextualPictures.length - 2,
+				buttonPrevVisible: true,
 				imageAStyle: {animation: `fadeInNext ${animation_time}s`},
 			} );
 			
@@ -69,23 +52,8 @@ class Carousel extends PureComponent {
 					imageBSrc: this.state.imageBSrc + 1,
 				} );
 			}, animation_time * 1000 );
-			
 			this.setState( {imageASrc: this.state.imageASrc + 1} );
-		} else {
-			this.setState( {
-				imageASrc: 0,
-				imageBSrc: this.props.location.contextualPictures.length - 1,
-				imageAStyle: {animation: `fadeInNext ${animation_time}s`},
-			} );
-			
-			setTimeout( () => {
-				this.setState( {
-					imageAStyle: null,
-					imageBSrc: 0,
-				} );
-			}, animation_time * 1000 );
-			
-			//this.setState( {imageASrc: this.state.imageASrc + 1} );
+			console.log( this.state.buttonNextVisible );
 		}
 	}
 	
@@ -98,10 +66,13 @@ class Carousel extends PureComponent {
 			const animation_time = 0.1; /* secondes */
 			
 			this.setState( {
+				buttonPrevVisible: this.state.imageASrc - 1 !== 0,
+				buttonNextVisible: true,
 				imageAStyle: {zIndex: '-1'},
 				imageBStyle: {animation: `fadeInPrevious ${animation_time}s`},
 				
 			} );
+			
 			
 			setTimeout( () => {
 				this.setState( {
@@ -126,7 +97,7 @@ class Carousel extends PureComponent {
 	}
 	
 	render() {
-		console.log( 'Carousel rendering', this.props.index );
+		console.log( 'Carousel rendering', this.props.location.id );
 		return (
 			<div className="container">
 				<div className="picturesWrapper">
@@ -139,10 +110,12 @@ class Carousel extends PureComponent {
 						     src={this.props.location.contextualPictures[this.state.imageASrc]}
 						     alt={this.props.location.title}/>
 					</div>
-					<InteractionWrapper key={this.props.index} previous={this.previous} next={this.next}
+					<InteractionWrapper key={this.props.location.id} buttonPrevVisible={this.state.buttonPrevVisible}
+					                    buttonNextVisible={this.state.buttonNextVisible}
+					                    previous={this.previous} next={this.next}
 					                    heartAdd={this.heartAdd}
 					                    location={this.props.location} heart={this.state.heart}
-					                    removeElement={this.props.removeElement}/>
+					                    setLocations={this.props.setLocations}/>
 				</div>
 				<div className="description">
 					<p className="title"><strong>{this.props.location.title}</  strong></p>
@@ -158,9 +131,7 @@ class Carousel extends PureComponent {
 				</div>
 			</div>
 		);
-		
 	};
 }
-
 
 export default Carousel;

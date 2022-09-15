@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { addElement } from '../../lib/hooks/elementHandler';
 
 class Header extends PureComponent {
 	/**
@@ -83,19 +84,19 @@ class Header extends PureComponent {
 				} );
 			}, animation_time * 1000 );
 			this.errorReset();
-			this.props.addElement( event.target );
+			this.props.setLocations( (prevState) => addElement( prevState || [], event.target ) );
+			
 		}
 	}
 	
 	render() {
 		console.log( 'Header rendering' );
 		return (
-			<header id={'header'}>
-				<input type="checkbox" id="formDisplay"/>
+			<header>
 				<label htmlFor={'formDisplay'}>
 					<h2>Add a new location</h2>
 				</label>
-				
+				<input type="checkbox" id="formDisplay"/>
 				<form onSubmit={event => this.formChecker( event )}>
 					<fieldset>
 						
@@ -136,7 +137,6 @@ class Header extends PureComponent {
 						</div>
 					</fieldset>
 				</form>
-			
 			</header>
 		);
 	}

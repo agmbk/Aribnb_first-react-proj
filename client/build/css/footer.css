@@ -1,0 +1,17 @@
+/* Header */
+footer {
+    background-color: rgb(61 129 177);
+    margin: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+    position: fixed;
+    z-index: 1000;
+}
+
+footer * {
+    margin: 0;
+}
