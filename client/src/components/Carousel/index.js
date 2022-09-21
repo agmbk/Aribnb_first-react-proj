@@ -1,5 +1,6 @@
-import React, { PureComponent } from 'react';
+import { PureComponent } from 'react';
 import InteractionWrapper from './InteractionWrapper';
+
 
 class Carousel extends PureComponent {
 	/**

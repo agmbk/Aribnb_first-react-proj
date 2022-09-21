@@ -1,6 +1,10 @@
 import React, { PureComponent } from 'react';
 import { addElement } from '../../lib/hooks/elementHandler';
 
+/**
+ * Handle location creating and removing
+ * @param props
+ */
 class Header extends PureComponent {
 	/**
 	 * Handle location creating and removing
@@ -85,7 +89,6 @@ class Header extends PureComponent {
 			}, animation_time * 1000 );
 			this.errorReset();
 			this.props.setLocations( (prevState) => addElement( prevState || [], event.target ) );
-			
 		}
 	}
 	

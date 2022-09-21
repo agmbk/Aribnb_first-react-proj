@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Layout from './Layout';
-import Loader from './Loader';
 import Carousel from './Carousel';
+import Loader from './Loader';
 
 
 function App() {
 	const [locations, setLocations] = useState();
-	
+	console.log( 'App rendering' );
 	useEffect( () => {
 		fetch( '/api/locations', {method: 'GET'} )
 			.then( (res) => {
@@ -15,7 +15,6 @@ function App() {
 				return res.json();
 			} )
 			.then( (data) => {setLocations( data.locations );} );
-		console.log( locations );
 	}, [] );
 	
 	/*
@@ -39,10 +38,8 @@ function App() {
 				<>
 					{locations ?
 						<div className="carousel">
-							{locations.map( e => {
-								console.log( e );
-								return <Carousel location={e} key={e.id} setLocations={setLocations}></Carousel>;
-							} )}
+							{locations.map( e => <Carousel location={e} key={e.id}
+							                               setLocations={setLocations}></Carousel> )}
 						</div>
 						: <Loader animation="animation"/>}
 				</>
