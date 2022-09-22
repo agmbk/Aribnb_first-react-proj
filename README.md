@@ -1,6 +1,6 @@
 # Aribnb website in reactJS
 
-This is a proof of competence, and my first reactJS experience
+This is a proof of competence for a client, and my first reactJS experience
 The application is composed of locations, a caroussel of images, with data underneath such as prices and dates
 
 ## The react app
