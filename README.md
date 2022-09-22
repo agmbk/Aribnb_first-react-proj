@@ -1,19 +1,18 @@
-### Aribnb like website in reactJS
+### Aribnb website in reactJS
 
 This is a proof of competence, and my first reactJS experience
 The application is composed of locations, a caroussel of images, with data underneath such as prices and dates
 
 # The react app
 
-The application is structured in component
-It uses classes and hook to be as efficient as possible in the rendering
+The react application
+The application is structured in components. It uses classes and hooks to be as efficient as possible in rendering.
 
 # The server
 
-It serve the data using a json file
-It has api root to receive the delete and insert request (not implemented yet)
+It serves the data using a json file.
+It has an api root to receive delete and insert requests (not yet implemented)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
